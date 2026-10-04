@@ -4,8 +4,10 @@ Site estático, sem framework, sem JavaScript próprio e sem build: HTML, CSS e 
 Foi montado no padrão dos jogos da casa (fundo branco, Archivo nos títulos, Inter no corpo, laranja
 só em botão, sem emoji) e os artigos são escritos aqui dentro, em `gerar.py`.
 
-**Nada foi publicado.** Não existe projeto no Vercel, não existe registro de DNS e nada foi
-empurrado para o GitHub. Os passos que faltam estão no fim deste arquivo.
+**Publicação em andamento (04/10/2026).** O repositório existe e foi empurrado para o GitHub
+(`isisalencastro/blog-iba`, público, mesma visibilidade do repositório dos jogos) e o jogo novo já está
+no ar (o terceiro artigo linka ele). Falta criar o projeto no Vercel, dizer a ele que atende
+`blog.ibaestudio.com` e criar o registro de DNS. Os passos exatos estão no fim deste arquivo.
 
 ## Como mexer
 
@@ -58,13 +60,16 @@ publicar o blog.
 
 ## Passos que faltam para publicar (dependem da palavra da Isis)
 
-1. **Subir o repositório dos jogos** (`/opt/data/staging-gametools`): o commit local com o jogo
-   novo está pronto e não foi empurrado. Sem o push, não existe deploy e o link do terceiro artigo
-   dá 404.
-2. **Criar o repositório e o projeto do blog.** Caminho mais curto, que não exige credencial nova
-   no servidor: criar o projeto no Vercel apontando para a pasta `/opt/data/blog-iba` (framework
-   "Other", sem build, sem comando de build, sem variável de ambiente), pelo PC, e depois criar o
-   repositório no GitHub a partir dessa pasta.
+1. ~~Subir o repositório dos jogos~~ **Feito em 04/10/2026** (`/opt/data/staging-gametools`,
+   `562e31d..ba1b930`): O Retângulo do dia está no ar em
+   `https://jogos.ibaestudio.com/jogos/retangulo-do-dia.html`, HTTP 200, e o arquivo servido tem o
+   mesmo hash do disco.
+2. **Criar o projeto do blog no Vercel.** Caminho pela tela, que não exige credencial nenhuma no
+   servidor: Vercel, Add New, Project, Import Git Repository, escolher `isisalencastro/blog-iba`.
+   Framework Preset **Other**, Build Command vazio, Output Directory vazio, Install Command vazio,
+   nenhuma variável de ambiente. Deploy. (Alternativa, se preferir pela máquina: criar o projeto
+   apontando para a pasta `/opt/data/blog-iba`, pelo PC, com os mesmos ajustes. O repositório já
+   existe, então a tela do Git é o caminho mais curto.)
 3. **Dizer ao Vercel que este projeto atende `blog.ibaestudio.com`**: Vercel, projeto do blog,
    Settings, Domains, Add, `blog.ibaestudio.com`. O Vercel informa na tela o registro que ele espera.
 4. **Registro de DNS no Cloudflare** (só com a palavra dela):
