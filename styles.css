@@ -1,0 +1,383 @@
+/* ==========================================================================
+   Blog da IBA: folha de estilo única do blog.
+   Mesma pele dos jogos: fundo branco, superfície clara, borda fina de 1px, sombra
+   discreta, azul de marca e laranja só em botão. Archivo nos títulos, Inter no corpo.
+   Sem JS, sem fonte de terceiro, sem emoji.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/archivo-latin-wght-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2');
+}
+
+:root {
+  --color-surface-page: #ffffff;
+  --color-surface: #f7f9fc;
+  --color-surface-alt: #eef2f8;
+
+  --color-ink: #101828;
+  --color-ink-muted: #4a5568;
+  --color-ink-soft: #5b6472;
+
+  --color-brand: #185cb6;
+  --color-brand-dark: #124c97;
+  --color-brand-soft: #f2f6fc;
+  --color-brand-soft-alt: #e8f0fb;
+
+  --color-accent: #ffbd59;
+  --color-accent-dark: #f0a62a;
+
+  --color-border: #e4e7ec;
+  --color-border-strong: #7c8798;
+  --shadow-soft: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --medida: 68ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface-page);
+  color: var(--color-ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Archivo', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.7rem); }
+h2 { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem); margin-top: 2em; }
+h3 { font-size: 1.15rem; margin-top: 1.6em; }
+
+p { margin: 0 0 1.1em; }
+
+a { color: var(--color-brand-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--color-brand); }
+
+strong { font-weight: 650; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0.12em 0.36em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 10px 16px;
+  background: var(--color-brand);
+  color: #fff;
+  z-index: 10;
+}
+
+.skip-link:focus { left: 8px; top: 8px; }
+
+.container {
+  width: min(100% - 40px, 1080px);
+  margin-inline: auto;
+}
+
+/* ---------- cabeçalho ---------- */
+.header {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-page);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Archivo', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.marca img { height: 22px; width: auto; }
+
+.nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.95rem;
+}
+
+.nav nav a {
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav nav a:hover,
+.nav nav a[aria-current='page'] { color: var(--color-brand-dark); }
+
+/* ---------- abertura ---------- */
+.abertura {
+  padding: 56px 0 8px;
+  max-width: 62ch;
+}
+
+.abertura .selo {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-brand-soft-alt);
+  color: var(--color-brand-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.abertura p { color: var(--color-ink-muted); font-size: 1.12rem; }
+
+/* ---------- lista de artigos ---------- */
+.lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista li { display: flex; }
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-page);
+  box-shadow: var(--shadow-soft);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.cartao:hover { border-color: var(--color-border-strong); box-shadow: 0 4px 10px rgba(16, 24, 40, 0.08); }
+.cartao:focus-visible { outline: 3px solid var(--color-brand); outline-offset: 2px; }
+
+.cartao img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--color-border); }
+
+/* Cartão sem capa de jogo: bloco da mesma proporção dos outros, com a marca no lugar da arte. */
+.cartao-capa-marca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-brand-soft-alt);
+}
+
+.cartao-capa-marca img {
+  width: auto;
+  height: 34px;
+  border: 0;
+}
+
+.cartao-corpo { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; flex: 1; }
+
+.cartao-data {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.cartao-corpo strong { font-family: 'Archivo', 'Inter', sans-serif; font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
+
+.cartao-corpo span { color: var(--color-ink-muted); font-size: 0.97rem; }
+
+.cartao-ler {
+  margin-top: auto;
+  padding-top: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-brand-dark);
+}
+
+/* ---------- artigo ---------- */
+.artigo { padding: 44px 0 8px; }
+
+.artigo-cabeca { max-width: var(--medida); }
+
+.artigo-data {
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.prosa { max-width: var(--medida); padding-bottom: 24px; }
+
+.prosa > p:first-of-type { font-size: 1.15rem; color: var(--color-ink-muted); }
+
+.prosa h2 { padding-top: 8px; }
+
+.prosa ul,
+.prosa ol { padding-left: 1.25rem; margin: 0 0 1.2em; }
+
+.prosa li { margin-bottom: 0.4em; }
+
+.prosa blockquote {
+  margin: 1.6em 0;
+  padding: 4px 0 4px 18px;
+  border-left: 3px solid var(--color-brand);
+  color: var(--color-ink-muted);
+  font-size: 1.05rem;
+}
+
+.prosa hr { border: 0; border-top: 1px solid var(--color-border); margin: 2.4em 0; }
+
+/* caixa de exemplo: mostra o tabuleiro ou a conta em texto, sem imagem */
+.exemplo {
+  margin: 1.6em 0;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  overflow-x: auto;
+}
+
+.exemplo-rotulo {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* ---------- chamada para o jogo ---------- */
+.jogar {
+  margin: 8px 0 0;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-page);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  max-width: var(--medida);
+}
+
+.jogar p { margin: 0; color: var(--color-ink-muted); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius-md);
+  background: var(--color-brand);
+  color: #ffffff;
+  font-weight: 650;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.btn:hover { background: var(--color-brand-dark); color: #ffffff; }
+.btn:focus-visible { outline: 3px solid var(--color-brand-dark); outline-offset: 2px; }
+
+.btn-acao {
+  background: var(--color-accent);
+  border-color: var(--color-accent-dark);
+  color: #101828;
+}
+
+.btn-acao:hover { background: var(--color-accent-dark); color: #101828; }
+
+/* ---------- rodapé ---------- */
+.footer {
+  margin-top: 64px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.footer-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 26px 0 34px;
+  font-size: 0.92rem;
+  color: var(--color-ink-muted);
+}
+
+.footer-conteudo p { margin: 0; }
+
+.footer-logo { height: 18px; width: auto; display: block; opacity: 0.9; }
+
+@media (max-width: 760px) {
+  .lista { grid-template-columns: minmax(0, 1fr); }
+  .abertura { padding-top: 36px; }
+  .jogar { align-items: flex-start; }
+}

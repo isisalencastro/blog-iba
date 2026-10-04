@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O Nó do dia: oito peças, quatro regras e mais de uma resposta certa</title>
+  <meta name="description" content="Um tabuleiro de 8 por 8 casas, oito peças para colocar e quatro regras que não mudam. O jogo confere as regras, não um gabarito, então existe mais de um jeito de acertar." />
+  <link rel="canonical" href="https://blog.ibaestudio.com/artigos/no-do-dia-oito-pecas.html" />
+
+  <meta name="theme-color" content="#185cb6" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Blog da IBA" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="O Nó do dia: oito peças, quatro regras e mais de uma resposta certa" />
+  <meta property="og:description" content="Um tabuleiro de 8 por 8 casas, oito peças para colocar e quatro regras que não mudam. O jogo confere as regras, não um gabarito, então existe mais de um jeito de acertar." />
+  <meta property="og:url" content="https://blog.ibaestudio.com/artigos/no-do-dia-oito-pecas.html" />
+  <meta property="og:image" content="https://blog.ibaestudio.com/assets/img/capa-no-do-dia.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="O Nó do dia: oito peças, quatro regras e mais de uma resposta certa" />
+  <meta name="twitter:description" content="Um tabuleiro de 8 por 8 casas, oito peças para colocar e quatro regras que não mudam. O jogo confere as regras, não um gabarito, então existe mais de um jeito de acertar." />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/styles.css?v=20261004b" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="marca" href="/">
+        <img src="/assets/img/logo-iba.png" alt="IBA Estúdios" width="216" height="72" />
+        <span>Blog</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="/">Artigos</a>
+        <a href="https://jogos.ibaestudio.com/">Jogos</a>
+        <a href="https://www.ibaestudio.com/">Estúdio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container artigo">
+    <div class="artigo-cabeca">
+      <p class="artigo-data"><time datetime="2026-10-04">4 de outubro de 2026</time></p>
+      <h1>O Nó do dia: oito peças, quatro regras e mais de uma resposta certa</h1>
+    </div>
+
+    <div class="prosa">
+<p>O Nó do dia é um tabuleiro de 8 por 8 casas dividido em regiões numeradas. A tarefa é
+colocar oito peças, e as regras são sempre as mesmas quatro:</p>
+
+<ul>
+  <li>uma peça em cada linha;</li>
+  <li>uma peça em cada coluna;</li>
+  <li>uma peça em cada região numerada;</li>
+  <li>nenhuma peça encosta em outra, nem na diagonal.</li>
+</ul>
+
+<p>O que muda de um dia para o outro é o desenho das regiões. Um tabuleiro novo por dia, igual
+para todo mundo, publicado na virada do dia pelo relógio de Brasília.</p>
+
+<h2>O jogo não guarda a resposta</h2>
+
+<p>Quando alguém fecha o tabuleiro, o jogo confere as quatro regras, e não compara o arranjo
+com um gabarito guardado. Se o arranjo passa nas quatro, vence, mesmo que seja diferente
+daquele que o gerador tinha em mente ao desenhar o tabuleiro.</p>
+
+<p>Isso não é detalhe de implementação. Contando com um solver, o tabuleiro do primeiro dia, de
+28 de setembro de 2026, tem 74 arranjos válidos diferentes. Guardar um só deles como resposta
+certa e recusar os outros 73 seria mentir para quem acertou. Quem chega em um deles chegou.</p>
+
+<h2>No celular e no teclado</h2>
+
+<p>No celular, um toque põe a peça e outro toque tira, sem arrastar nada. No computador as setas
+andam entre as casas e a barra de espaço põe e tira a peça, para quem prefere resolver sem
+tirar a mão do teclado.</p>
+
+<h2>O que o jogo não faz</h2>
+
+<p>Não tem cadastro, não tem ranking e não guarda nada no servidor. A contagem de dias seguidos
+fica no armazenamento do próprio navegador, e some se a pessoa limpar os dados do site.</p>
+
+<p>Pedir a resposta existe, para quem travou e não quer sair sem ver a solução. Só que ver a
+resposta não é resolver: a sequência de dias seguidos volta ao começo.</p>
+      <hr />
+      <p><a href="/">Voltar para a lista de artigos</a></p>
+    </div>
+
+      <div class="jogar">
+        <p>O jogo fica no catálogo, aberto e sem cadastro.</p>
+        <a class="btn btn-acao" href="https://jogos.ibaestudio.com/jogos/no-do-dia.html">Jogar O Nó do dia</a>
+      </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-conteudo">
+      <p>
+        Blog da IBA Estúdios, em Porto Alegre.
+        Contato: <a href="mailto:contato@ibaestudio.com">contato@ibaestudio.com</a>
+        · <a href="https://wa.me/5551993307386">WhatsApp</a>
+      </p>
+      <p>Os jogos diários ficam em <a href="https://jogos.ibaestudio.com/">jogos.ibaestudio.com</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Como nascem os jogos diários da IBA</title>
+  <meta name="description" content="O site é estático, sem cadastro e sem servidor. O dia é lido no fuso de Brasília, e um ano inteiro de conteúdo é gerado e conferido antes de entrar no ar." />
+  <link rel="canonical" href="https://blog.ibaestudio.com/artigos/como-nascem-os-jogos-diarios.html" />
+
+  <meta name="theme-color" content="#185cb6" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Blog da IBA" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Como nascem os jogos diários da IBA" />
+  <meta property="og:description" content="O site é estático, sem cadastro e sem servidor. O dia é lido no fuso de Brasília, e um ano inteiro de conteúdo é gerado e conferido antes de entrar no ar." />
+  <meta property="og:url" content="https://blog.ibaestudio.com/artigos/como-nascem-os-jogos-diarios.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Como nascem os jogos diários da IBA" />
+  <meta name="twitter:description" content="O site é estático, sem cadastro e sem servidor. O dia é lido no fuso de Brasília, e um ano inteiro de conteúdo é gerado e conferido antes de entrar no ar." />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/styles.css?v=20261004b" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="marca" href="/">
+        <img src="/assets/img/logo-iba.png" alt="IBA Estúdios" width="216" height="72" />
+        <span>Blog</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="/">Artigos</a>
+        <a href="https://jogos.ibaestudio.com/">Jogos</a>
+        <a href="https://www.ibaestudio.com/">Estúdio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container artigo">
+    <div class="artigo-cabeca">
+      <p class="artigo-data"><time datetime="2026-10-04">4 de outubro de 2026</time></p>
+      <h1>Como nascem os jogos diários da IBA</h1>
+    </div>
+
+    <div class="prosa">
+<p>Os jogos diários da IBA são três, e todos partem do mesmo desenho. Uma sessão de um a cinco
+minutos, um desafio por dia, igual para todo mundo, que troca na virada do dia.</p>
+
+<h2>Site estático, sem cadastro e sem servidor</h2>
+
+<p>Tudo o que a pessoa vê vem de arquivos: HTML, CSS e JavaScript. Não existe conta para criar,
+não existe banco de dados guardando o que cada um jogou, e não existe servidor para cair no meio
+da partida. Também não existe aplicativo para instalar: abre no navegador do celular e joga.</p>
+
+<p>O lado bom disso é a previsibilidade. O lado ruim é que quase todo o trabalho acontece antes,
+na hora de gerar o conteúdo e conferir.</p>
+
+<h2>O dia é o dia do Brasil</h2>
+
+<p>O jogo lê o relógio no fuso de Brasília, e não no relógio do aparelho. Celular com fuso
+trocado, ou alguém viajando, veria o desafio de amanhã fora de hora se o jogo confiasse na hora
+do aparelho. Como o dia vem do mesmo lugar para todo mundo, o tabuleiro de hoje é o mesmo em
+Porto Alegre e em qualquer outra cidade.</p>
+
+<h2>Um ano inteiro gerado antes</h2>
+
+<p>O conteúdo de cada jogo é gerado por ano, de uma vez. Antes de entrar no ar, o arquivo passa
+por conferência por execução: no caso do Nó do dia e do Retângulo do dia, um solver resolve os
+tabuleiros de novo e compara com o que o gerador tinha calculado. Quando os dois discordam, o
+arquivo não vai para o ar.</p>
+
+<p>Gerar com antecedência também evita o pior defeito possível num jogo diário: o dia em que o
+gerador falha às 23h59 e não existe desafio para publicar.</p>
+
+<h2>Conferir a regra, e não o gabarito</h2>
+
+<p>Nenhum dos três jogos compara o que a pessoa fez com uma resposta guardada. Eles conferem a
+regra. Isso importa porque existe mais de uma resposta certa em todos os casos: o tabuleiro do
+primeiro dia do Nó do dia tem 74 arranjos válidos, e a primeira conta do dia aceita 83×9 e 9×83
+para chegar em 747.</p>
+
+<p>Validar regra dá mais trabalho na hora de escrever o código, porque obriga a descrever a
+solução como uma condição em vez de guardar um resultado. Em troca, o jogo nunca recusa um
+acerto.</p>
+
+<h2>O que a pessoa não vê, mas sente</h2>
+
+<p>Alguns cuidados não aparecem na tela e mudam a experiência:</p>
+
+<ul>
+  <li><strong>Carimbo de versão no endereço dos arquivos.</strong> O CSS e o JavaScript ficam em
+  cache no CDN, e o HTML não. Por isso cada mudança no CSS ou no JavaScript vem com um carimbo no
+  endereço do arquivo. Sem o carimbo, quem já tinha aberto o site continua com o arquivo velho, e
+  a página quebra de um jeito difícil de enxergar.</li>
+  <li><strong>Movimento reduzido.</strong> Quem pede menos animação no sistema operacional recebe
+  a tela sem animação nenhuma. Não é preferência estética: é a configuração de acessibilidade da
+  pessoa sendo respeitada.</li>
+  <li><strong>Contraste medido, não estimado.</strong> O contraste de texto e de interface é
+  conferido por um script que lê as cores do arquivo de estilo e calcula a razão: no mínimo 4,5:1
+  para texto e 3:1 para forma. Hoje são 34 pares medidos, nos dois temas.</li>
+  <li><strong>Teto de JavaScript.</strong> O site inteiro respeita um teto de 120 KB de JavaScript.
+  Hoje ele soma 87 KB, sem nenhuma biblioteca de terceiro. Foi o que dispensou uma biblioteca de
+  arrastar e obrigou a escrever a interação com os eventos nativos do navegador.</li>
+  <li><strong>Capa e identidade.</strong> A arte de cada jogo é gerada por script a partir da capa
+  aprovada, com o recorte do mascote idêntico, pixel a pixel. Jogo novo não inventa um rosto novo
+  para a marca: fundo branco, Archivo nos títulos, Inter no corpo, laranja apenas em botão, e
+  nenhum emoji em nada que o visitante vê.</li>
+</ul>
+
+<h2>O que os jogos não fazem</h2>
+
+<p>Não existe ranking, liga ou premiação. Não existe histórico do lado do servidor: a sequência de
+dias seguidos fica no navegador de quem joga e desaparece se os dados do site forem limpos. E não
+existe cobrança: os três jogos são abertos, sem cadastro e sem anúncio.</p>
+      <hr />
+      <p><a href="/">Voltar para a lista de artigos</a></p>
+    </div>
+
+      <div class="jogar">
+        <p>O jogo fica no catálogo, aberto e sem cadastro.</p>
+        <a class="btn btn-acao" href="https://jogos.ibaestudio.com/">Jogar os jogos da IBA</a>
+      </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-conteudo">
+      <p>
+        Blog da IBA Estúdios, em Porto Alegre.
+        Contato: <a href="mailto:contato@ibaestudio.com">contato@ibaestudio.com</a>
+        · <a href="https://wa.me/5551993307386">WhatsApp</a>
+      </p>
+      <p>Os jogos diários ficam em <a href="https://jogos.ibaestudio.com/">jogos.ibaestudio.com</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
