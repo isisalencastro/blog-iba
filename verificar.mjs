@@ -14,10 +14,7 @@ import { dirname, join } from "node:path";
 const RAIZ = dirname(fileURLToPath(import.meta.url));
 const PAGINAS = [
   "index.html",
-  "artigos/no-do-dia-oito-pecas.html",
-  "artigos/conta-do-dia-qualquer-conta.html",
-  "artigos/retangulo-do-dia-grade-sem-sobra.html",
-  "artigos/como-nascem-os-jogos-diarios.html",
+  "artigos/jogos-iba-tres-jogos-diarios.html",
 ];
 const OBRIGATORIOS = [...PAGINAS, "styles.css", "sitemap.xml", "robots.txt", "favicon.ico",
   "assets/img/logo-iba.png", "assets/img/favicon-32.png",

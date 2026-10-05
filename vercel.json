@@ -40,5 +40,27 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/artigos/no-do-dia-oito-pecas.html",
+      "destination": "/artigos/jogos-iba-tres-jogos-diarios.html",
+      "permanent": true
+    },
+    {
+      "source": "/artigos/conta-do-dia-qualquer-conta.html",
+      "destination": "/artigos/jogos-iba-tres-jogos-diarios.html",
+      "permanent": true
+    },
+    {
+      "source": "/artigos/retangulo-do-dia-grade-sem-sobra.html",
+      "destination": "/artigos/jogos-iba-tres-jogos-diarios.html",
+      "permanent": true
+    },
+    {
+      "source": "/artigos/como-nascem-os-jogos-diarios.html",
+      "destination": "/artigos/jogos-iba-tres-jogos-diarios.html",
+      "permanent": true
+    }
   ]
 }

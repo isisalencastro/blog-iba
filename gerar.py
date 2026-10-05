@@ -16,7 +16,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent
 DOMINIO = "https://blog.ibaestudio.com"
-VERSAO_CSS = "20261004b"
+VERSAO_CSS = "20261004c"
 JOGOS = "https://jogos.ibaestudio.com/"
 ESTUDIO = "https://www.ibaestudio.com/"
 CONTATO = "contato@ibaestudio.com"
@@ -35,245 +35,118 @@ def por_extenso(iso: str) -> str:
 
 ARTIGOS = [
     {
-        "slug": "no-do-dia-oito-pecas",
-        "titulo": "O Nó do dia: oito peças, quatro regras e mais de uma resposta certa",
+        "slug": "jogos-iba-tres-jogos-diarios",
+        "titulo": "Jogos IBA: três jogos diários, abertos e sem cadastro",
         "data": "2026-10-04",
         "resumo": (
-            "Um tabuleiro de 8 por 8 casas, oito peças para colocar e quatro regras que não mudam. "
-            "O jogo confere as regras, não um gabarito, então existe mais de um jeito de acertar."
-        ),
-        "imagem": "capa-no-do-dia-800.png",
-        "imagem_og": "capa-no-do-dia.png",
-        "jogo": "https://jogos.ibaestudio.com/jogos/no-do-dia.html",
-        "jogo_nome": "O Nó do dia",
-        "corpo": """
-<p>O Nó do dia é um tabuleiro de 8 por 8 casas dividido em regiões numeradas. A tarefa é
-colocar oito peças, e as regras são sempre as mesmas quatro:</p>
-
-<ul>
-  <li>uma peça em cada linha;</li>
-  <li>uma peça em cada coluna;</li>
-  <li>uma peça em cada região numerada;</li>
-  <li>nenhuma peça encosta em outra, nem na diagonal.</li>
-</ul>
-
-<p>O que muda de um dia para o outro é o desenho das regiões. Um tabuleiro novo por dia, igual
-para todo mundo, publicado na virada do dia pelo relógio de Brasília.</p>
-
-<h2>O jogo não guarda a resposta</h2>
-
-<p>Quando alguém fecha o tabuleiro, o jogo confere as quatro regras, e não compara o arranjo
-com um gabarito guardado. Se o arranjo passa nas quatro, vence, mesmo que seja diferente
-daquele que o gerador tinha em mente ao desenhar o tabuleiro.</p>
-
-<p>Isso não é detalhe de implementação. Contando com um solver, o tabuleiro do primeiro dia, de
-28 de setembro de 2026, tem 74 arranjos válidos diferentes. Guardar um só deles como resposta
-certa e recusar os outros 73 seria mentir para quem acertou. Quem chega em um deles chegou.</p>
-
-<h2>No celular e no teclado</h2>
-
-<p>No celular, um toque põe a peça e outro toque tira, sem arrastar nada. No computador as setas
-andam entre as casas e a barra de espaço põe e tira a peça, para quem prefere resolver sem
-tirar a mão do teclado.</p>
-
-<h2>O que o jogo não faz</h2>
-
-<p>Não tem cadastro, não tem ranking e não guarda nada no servidor. A contagem de dias seguidos
-fica no armazenamento do próprio navegador, e some se a pessoa limpar os dados do site.</p>
-
-<p>Pedir a resposta existe, para quem travou e não quer sair sem ver a solução. Só que ver a
-resposta não é resolver: a sequência de dias seguidos volta ao começo.</p>
-""",
-    },
-    {
-        "slug": "conta-do-dia-qualquer-conta",
-        "titulo": "A Conta do dia: vale qualquer conta que chegue no alvo",
-        "data": "2026-10-04",
-        "resumo": (
-            "Um número alvo, um limite de caracteres e seis tentativas. O jogo aceita qualquer conta "
-            "que chegue no alvo dentro do limite, e o limite do dia tem uma razão de ser."
-        ),
-        "imagem": "capa-conta-do-dia-800.png",
-        "imagem_og": "capa-conta-do-dia.png",
-        "jogo": "https://jogos.ibaestudio.com/jogos/conta-do-dia.html",
-        "jogo_nome": "A Conta do dia",
-        "corpo": """
-<p>A Conta do dia dá um número alvo e um limite de caracteres. A pessoa escreve uma conta que
-chegue nesse número, dentro do limite, em até seis tentativas. As regras:</p>
-
-<ul>
-  <li>use os números de 0 a 9 e as operações + − × ÷;</li>
-  <li>a conta precisa caber no limite de caracteres do dia;</li>
-  <li>não há parênteses: a conta é lida da esquerda para a direita;</li>
-  <li>a divisão só vale quando dá número inteiro;</li>
-  <li>são seis tentativas, e qualquer conta que chegue no alvo vence.</li>
-</ul>
-
-<h2>O limite do dia não é um número escolhido a esmo</h2>
-
-<p>O limite de caracteres de cada dia é o tamanho da <strong>menor</strong> conta que chega naquele
-alvo. Isso faz "no máximo N caracteres" e "exatamente N caracteres" valerem a mesma coisa em
-termos de resposta: se existe uma conta menor, o limite do dia é ela.</p>
-
-<p>A primeira conta, de 1º de outubro de 2026, pedia 747 em quatro caracteres. Cabem ali
-<code>83×9</code> e <code>9×83</code>, que são contas diferentes na tela e chegam no mesmo
-número. No arquivo que cobre os 400 dias do ano, nenhum dia tem uma resposta só: o menor dia
-aponta duas, e o maior aponta dez.</p>
-
-<h2>A mesma regra nos dois lados</h2>
-
-<p>Quem gera o conteúdo de um ano é um script em Python. Quem confere o que a pessoa digita é o
-navegador, em JavaScript. Se as duas versões da regra divergirem em algum detalhe, o dia fica
-injusto: alguém acerta e o jogo recusa.</p>
-
-<p>Por isso a regra mora em um arquivo só, usado pelos dois lados, e existe uma conferência por
-execução que compara os dois resultados. A última rodada comparou 12.852 contas.</p>
-
-<h2>O que o jogo não faz</h2>
-
-<p>Não guarda a conta enviada no servidor, não tem cadastro e não tem ranking. As tentativas
-ficam na tela do dia: quem escreve uma conta válida vence e o dia acabou.</p>
-""",
-    },
-    {
-        "slug": "retangulo-do-dia-grade-sem-sobra",
-        "titulo": "O Retângulo do dia: dividir a grade sem deixar casa de fora",
-        "data": "2026-10-04",
-        "resumo": (
-            "O jogo mais novo do catálogo. A mecânica é fácil de explicar e trabalhosa de gerar: "
-            "tabuleiro sorteado sem solução é pior que tabuleiro nenhum."
-        ),
-        "imagem": "capa-retangulo-do-dia-800.png",
-        "imagem_og": "capa-retangulo-do-dia.png",
-        "jogo": "https://jogos.ibaestudio.com/jogos/retangulo-do-dia.html",
-        "jogo_nome": "O Retângulo do dia",
-        "corpo": """
-<p>O Retângulo do dia é uma grade de 6 por 6 casas com números espalhados. A tarefa é dividir a
-grade inteira em retângulos, e o retângulo tem duas obrigações ao mesmo tempo:</p>
-
-<ul>
-  <li>fechar sobre exatamente um número;</li>
-  <li>ter área igual a esse número.</li>
-</ul>
-
-<p>Um retângulo de 2 por 3 tem seis casas, então só vale se o número dentro dele for 6. Nenhuma
-casa fica de fora, e nenhum retângulo cobre o número de outro.</p>
-
-<h2>O problema de verdade está em gerar</h2>
-
-<p>Dividir a grade é a parte fácil. Montar um tabuleiro que tenha solução é o trabalho. Se a
-grade for preenchida com números escolhidos ao acaso, é questão de tempo até sair um tabuleiro
-sem resposta nenhuma, e um quebra-cabeça insolúvel é pior do que não publicar nada naquele dia.</p>
-
-<p>O gerador resolve cada tabuleiro antes de aceitar. A preferência é solução única, e foi o que
-saiu nos 400 dias do arquivo: uma resposta por dia, sem margem para uma segunda divisão válida.
-Tabuleiro sem solução nenhuma não entra, em dia nenhum.</p>
-
-<p>E a conferência não confia em quem gerou. O gerador escreve em Python, e existe um segundo
-solver, escrito de novo em Node, que relê o arquivo do ano inteiro e resolve cada dia por conta
-própria. Os dois têm de concordar. Quando não concordam, o problema é do gerador, e o dia não
-entra no ar.</p>
-
-<h2>Como se joga no celular</h2>
-
-<p>Arrasta-se de uma casa até o canto oposto do retângulo, com o dedo ou com o mouse. Um toque
-em cima de um retângulo já desenhado tira ele, para quem errou a medida. Numa casa sozinha com o
-número 1, um toque já fecha o retângulo de uma casa só.</p>
-
-<p>Quando o retângulo não vale, o aviso diz o motivo, e não um erro genérico: se não tem número
-dentro, se tem dois, ou se a área não bate com o número. Quem está jogando sabe o que ajustar.</p>
-
-<p>Como nos outros jogos, a conferência é por regra. Qualquer divisão da grade que respeite as
-duas obrigações vence.</p>
-
-<h2>O que o jogo não faz</h2>
-
-<p>Não tem cadastro, não guarda o tabuleiro resolvido no servidor e não tem ranking. O cronômetro
-é para quem gosta de comparar o próprio tempo com o de ontem, e não vale como placar de ninguém.</p>
-""",
-    },
-    {
-        "slug": "como-nascem-os-jogos-diarios",
-        "titulo": "Como nascem os jogos diários da IBA",
-        "data": "2026-10-04",
-        "resumo": (
-            "O site é estático, sem cadastro e sem servidor. O dia é lido no fuso de Brasília, e um "
-            "ano inteiro de conteúdo é gerado e conferido antes de entrar no ar."
+            "O Nó do dia, a Conta do dia e o Retângulo do dia: um desafio novo por dia, igual para "
+            "todo mundo, que abre no navegador. Como cada um funciona e o que existe por trás."
         ),
         "imagem": None,
-        "imagem_og": None,
+        "imagem_og": "capa-retangulo-do-dia.png",
         "jogo": JOGOS,
         "jogo_nome": "os jogos da IBA",
         "corpo": """
-<p>Os jogos diários da IBA são três, e todos partem do mesmo desenho. Uma sessão de um a cinco
-minutos, um desafio por dia, igual para todo mundo, que troca na virada do dia.</p>
+<p>O Jogos IBA é o site de jogos do estúdio, em <a href="https://jogos.ibaestudio.com/">jogos.ibaestudio.com</a>.
+São três jogos curtos, de um a cinco minutos cada, com um desafio novo por dia, igual para todo
+mundo, que troca na virada do dia pelo relógio de Brasília. Não tem cadastro, não tem aplicativo
+para instalar e não tem anúncio: abre no navegador do celular e joga.</p>
 
-<h2>Site estático, sem cadastro e sem servidor</h2>
+<h2>O Nó do dia</h2>
 
-<p>Tudo o que a pessoa vê vem de arquivos: HTML, CSS e JavaScript. Não existe conta para criar,
-não existe banco de dados guardando o que cada um jogou, e não existe servidor para cair no meio
-da partida. Também não existe aplicativo para instalar: abre no navegador do celular e joga.</p>
+<figure>
+  <img src="/assets/img/capa-no-do-dia-800.png" alt="Capa do jogo O Nó do dia" width="800" height="450" loading="lazy" />
+</figure>
 
-<p>O lado bom disso é a previsibilidade. O lado ruim é que quase todo o trabalho acontece antes,
-na hora de gerar o conteúdo e conferir.</p>
+<p>Um tabuleiro de 8 por 8 casas dividido em regiões numeradas. A tarefa é colocar oito peças:
+uma em cada linha, uma em cada coluna, uma em cada região, e nenhuma encostando em outra, nem na
+diagonal. As regras são sempre essas quatro; o que muda de um dia para o outro é o desenho das
+regiões.</p>
 
-<h2>O dia é o dia do Brasil</h2>
+<p>No celular, um toque põe a peça e outro tira. No computador, as setas andam entre as casas e a
+barra de espaço põe e tira a peça.</p>
 
-<p>O jogo lê o relógio no fuso de Brasília, e não no relógio do aparelho. Celular com fuso
-trocado, ou alguém viajando, veria o desafio de amanhã fora de hora se o jogo confiasse na hora
-do aparelho. Como o dia vem do mesmo lugar para todo mundo, o tabuleiro de hoje é o mesmo em
-Porto Alegre e em qualquer outra cidade.</p>
+<h2>A Conta do dia</h2>
 
-<h2>Um ano inteiro gerado antes</h2>
+<figure>
+  <img src="/assets/img/capa-conta-do-dia-800.png" alt="Capa do jogo A Conta do dia" width="800" height="450" loading="lazy" />
+</figure>
 
-<p>O conteúdo de cada jogo é gerado por ano, de uma vez. Antes de entrar no ar, o arquivo passa
-por conferência por execução: no caso do Nó do dia e do Retângulo do dia, um solver resolve os
-tabuleiros de novo e compara com o que o gerador tinha calculado. Quando os dois discordam, o
-arquivo não vai para o ar.</p>
+<p>Um número alvo, um limite de caracteres e seis tentativas para escrever uma conta que chegue
+no alvo. Valem os números de 0 a 9 e as operações + − × ÷, sem parênteses: a conta é lida da
+esquerda para a direita, e a divisão só vale quando dá número inteiro.</p>
 
-<p>Gerar com antecedência também evita o pior defeito possível num jogo diário: o dia em que o
-gerador falha às 23h59 e não existe desafio para publicar.</p>
+<p>O limite do dia não é escolhido a esmo. Ele é o tamanho da menor conta que chega naquele alvo,
+então "no máximo N caracteres" e "exatamente N caracteres" dão no mesmo. A primeira conta, de 1º
+de outubro de 2026, pedia 747 em quatro caracteres, e cabem ali <code>83×9</code> e
+<code>9×83</code>.</p>
 
-<h2>Conferir a regra, e não o gabarito</h2>
+<h2>O Retângulo do dia</h2>
 
-<p>Nenhum dos três jogos compara o que a pessoa fez com uma resposta guardada. Eles conferem a
-regra. Isso importa porque existe mais de uma resposta certa em todos os casos: o tabuleiro do
-primeiro dia do Nó do dia tem 74 arranjos válidos, e a primeira conta do dia aceita 83×9 e 9×83
-para chegar em 747.</p>
+<figure>
+  <img src="/assets/img/capa-retangulo-do-dia-800.png" alt="Capa do jogo O Retângulo do dia" width="800" height="450" loading="lazy" />
+</figure>
 
-<p>Validar regra dá mais trabalho na hora de escrever o código, porque obriga a descrever a
-solução como uma condição em vez de guardar um resultado. Em troca, o jogo nunca recusa um
-acerto.</p>
+<p>O mais novo do catálogo. Uma grade de 6 por 6 casas com números espalhados, que precisa ser
+dividida inteira em retângulos. Cada retângulo fecha sobre exatamente um número e tem área igual
+a ele: um retângulo de 2 por 3 só vale se o número dentro for 6. Arrasta-se de uma casa até o
+canto oposto, com o dedo ou com o mouse, e um toque em cima de um retângulo já desenhado tira ele.
+Quando o retângulo não vale, o aviso diz o motivo: sem número dentro, com dois números, ou com a
+área errada.</p>
+
+<h2>O jogo confere a regra, não um gabarito</h2>
+
+<p>Nenhum dos três compara o que a pessoa fez com uma resposta guardada. Eles conferem a regra, e
+qualquer resposta que respeite as regras vence. Isso importa porque quase sempre existe mais de
+uma resposta certa. Contando com um solver, o tabuleiro do primeiro dia do Nó do dia, de 28 de
+setembro de 2026, tem 74 arranjos válidos. Guardar um só como resposta e recusar os outros 73 seria
+dizer a quem acertou que errou.</p>
+
+<p>Na Conta do dia, a regra roda em dois lugares: o script em Python que gera o ano e o navegador,
+em JavaScript, que confere o que a pessoa digita. Se as duas versões divergissem em algum detalhe,
+alguém acertaria e o jogo recusaria. Por isso a regra mora em um arquivo só, usado pelos dois
+lados, e uma conferência por execução compara os resultados. A última rodada comparou 12.852
+contas.</p>
+
+<h2>Um ano inteiro gerado e conferido antes</h2>
+
+<p>O conteúdo de cada jogo é gerado por ano, de uma vez, e conferido antes de entrar no ar. Isso
+evita o pior defeito de um jogo diário: o dia em que o gerador falha às 23h59 e não há desafio
+para publicar.</p>
+
+<p>No Retângulo do dia, gerar é a parte difícil. Grade preenchida ao acaso cedo ou tarde sai sem
+solução, e quebra-cabeça insolúvel é pior que dia nenhum. O gerador resolve cada tabuleiro antes
+de aceitar, e nos 400 dias do arquivo saiu solução única em todos. Depois, um segundo solver,
+escrito de novo em Node, relê o ano inteiro e resolve cada dia por conta própria. Se os dois
+discordam, o dia não vai para o ar.</p>
+
+<p>O dia também vem de um lugar só: o jogo lê o relógio no fuso de Brasília, e não o do aparelho.
+Celular com fuso trocado veria o desafio de amanhã fora de hora; assim, o tabuleiro de hoje é o
+mesmo em Porto Alegre e em qualquer outra cidade.</p>
 
 <h2>O que a pessoa não vê, mas sente</h2>
 
-<p>Alguns cuidados não aparecem na tela e mudam a experiência:</p>
-
 <ul>
-  <li><strong>Carimbo de versão no endereço dos arquivos.</strong> O CSS e o JavaScript ficam em
-  cache no CDN, e o HTML não. Por isso cada mudança no CSS ou no JavaScript vem com um carimbo no
-  endereço do arquivo. Sem o carimbo, quem já tinha aberto o site continua com o arquivo velho, e
-  a página quebra de um jeito difícil de enxergar.</li>
-  <li><strong>Movimento reduzido.</strong> Quem pede menos animação no sistema operacional recebe
-  a tela sem animação nenhuma. Não é preferência estética: é a configuração de acessibilidade da
-  pessoa sendo respeitada.</li>
-  <li><strong>Contraste medido, não estimado.</strong> O contraste de texto e de interface é
-  conferido por um script que lê as cores do arquivo de estilo e calcula a razão: no mínimo 4,5:1
-  para texto e 3:1 para forma. Hoje são 34 pares medidos, nos dois temas.</li>
-  <li><strong>Teto de JavaScript.</strong> O site inteiro respeita um teto de 120 KB de JavaScript.
-  Hoje ele soma 87 KB, sem nenhuma biblioteca de terceiro. Foi o que dispensou uma biblioteca de
-  arrastar e obrigou a escrever a interação com os eventos nativos do navegador.</li>
-  <li><strong>Capa e identidade.</strong> A arte de cada jogo é gerada por script a partir da capa
-  aprovada, com o recorte do mascote idêntico, pixel a pixel. Jogo novo não inventa um rosto novo
-  para a marca: fundo branco, Archivo nos títulos, Inter no corpo, laranja apenas em botão, e
-  nenhum emoji em nada que o visitante vê.</li>
+  <li><strong>Site estático.</strong> Tudo vem de arquivos: HTML, CSS e JavaScript. Não há banco de
+  dados guardando o que cada um jogou, nem servidor para cair no meio da partida.</li>
+  <li><strong>Leve.</strong> O site respeita um teto de 120 KB de JavaScript e hoje soma 87 KB, sem
+  biblioteca de terceiro. O arrastar do Retângulo foi escrito com os eventos nativos do navegador
+  por causa disso.</li>
+  <li><strong>Contraste medido.</strong> Um script lê as cores do arquivo de estilo e calcula a
+  razão de contraste: no mínimo 4,5:1 para texto e 3:1 para forma. São 34 pares medidos, nos dois
+  temas.</li>
+  <li><strong>Movimento reduzido.</strong> Quem pede menos animação no sistema recebe a tela sem
+  animação nenhuma.</li>
+  <li><strong>Carimbo de versão.</strong> Cada mudança no CSS ou no JavaScript muda o endereço do
+  arquivo, para ninguém ficar preso a uma versão velha guardada em cache.</li>
 </ul>
 
 <h2>O que os jogos não fazem</h2>
 
-<p>Não existe ranking, liga ou premiação. Não existe histórico do lado do servidor: a sequência de
-dias seguidos fica no navegador de quem joga e desaparece se os dados do site forem limpos. E não
-existe cobrança: os três jogos são abertos, sem cadastro e sem anúncio.</p>
+<p>Não existe ranking, liga ou premiação, e nada do que a pessoa joga vai para um servidor. A
+sequência de dias seguidos fica no navegador de quem joga e some se os dados do site forem
+limpos. No Nó do dia, pedir a resposta existe, para quem travou, mas ver a resposta não é
+resolver: a sequência volta ao começo.</p>
 """,
     },
 ]
@@ -509,7 +382,7 @@ def main() -> None:
 
     for arquivo in escritos:
         print(f"escrito: {arquivo.relative_to(RAIZ)} ({arquivo.stat().st_size} bytes)")
-    print(f"artigos: {len(ARTIGOS)} | um índice, 4 páginas de artigo e o sitemap")
+    print(f"artigos: {len(ARTIGOS)} | um índice, {len(ARTIGOS)} página(s) de artigo e o sitemap")
 
 
 if __name__ == "__main__":

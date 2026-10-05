@@ -197,6 +197,9 @@ code {
 
 .lista li { display: flex; }
 
+/* Um artigo só: o cartão não fica perdido na metade de uma grade de duas colunas. */
+.lista:has(> li:only-child) { grid-template-columns: minmax(0, 620px); }
+
 .cartao {
   display: flex;
   flex-direction: column;
@@ -282,6 +285,16 @@ code {
   border-left: 3px solid var(--color-brand);
   color: var(--color-ink-muted);
   font-size: 1.05rem;
+}
+
+.prosa figure { margin: 0 0 1.4em; }
+
+.prosa figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
 }
 
 .prosa hr { border: 0; border-top: 1px solid var(--color-border); margin: 2.4em 0; }

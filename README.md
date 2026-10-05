@@ -4,10 +4,9 @@ Site estático, sem framework, sem JavaScript próprio e sem build: HTML, CSS e 
 Foi montado no padrão dos jogos da casa (fundo branco, Archivo nos títulos, Inter no corpo, laranja
 só em botão, sem emoji) e os artigos são escritos aqui dentro, em `gerar.py`.
 
-**Publicação em andamento (04/10/2026).** O repositório existe e foi empurrado para o GitHub
-(`isisalencastro/blog-iba`, público, mesma visibilidade do repositório dos jogos) e o jogo novo já está
-no ar (o terceiro artigo linka ele). Falta criar o projeto no Vercel, dizer a ele que atende
-`blog.ibaestudio.com` e criar o registro de DNS. Os passos exatos estão no fim deste arquivo.
+**No ar desde 04/10/2026** em `https://blog.ibaestudio.com` (projeto `blog-iba` na Vercel, ligado a
+este repositório: push no `main` publica sozinho). O DNS é um `CNAME blog` na Cloudflare. O link
+"Blog" do site principal (`ibaestudio-site`) aponta para cá, e o `/blog` de lá redireciona.
 
 ## Como mexer
 
@@ -40,61 +39,27 @@ página.
 
 ### Artigos
 
-1. `artigos/no-do-dia-oito-pecas.html`: O Nó do dia, as quatro regras e por que o jogo confere
-   regra em vez de guardar gabarito.
-2. `artigos/conta-do-dia-qualquer-conta.html`: A Conta do dia, o limite de caracteres e a regra
-   que mora em um arquivo só.
-3. `artigos/retangulo-do-dia-grade-sem-sobra.html`: O Retângulo do dia, o jogo mais novo, e o
-   problema de gerar tabuleiro que tenha solução.
-4. `artigos/como-nascem-os-jogos-diarios.html`: o processo da linha inteira, do fuso ao carimbo de
-   versão no CSS.
+Regra da Isis (04/10/2026): **um artigo por tema**. Os quatro textos da estreia (um por jogo e um
+sobre o processo) viraram um só, porque eram quatro artigos sobre o mesmo assunto. Os endereços
+antigos redirecionam para o artigo único (`vercel.json`).
+
+1. `artigos/jogos-iba-tres-jogos-diarios.html`: o site de jogos inteiro, os três jogos, a
+   conferência por regra, o ano gerado antes e os cuidados que não aparecem na tela.
 
 Nenhum número dos artigos foi estimado: os que aparecem (74 arranjos válidos no tabuleiro do
 primeiro dia, 400 dias com solução única, 12.852 contas conferidas, 34 pares de contraste, teto de
 120 KB de JavaScript) saíram de execução, e a maior parte deles saiu de arquivo que está no
 repositório dos jogos, não da memória de quem escreveu.
 
-**Dependência:** o terceiro artigo fala do Retângulo do dia e linka a página do jogo. Blog e jogo
-sobem na mesma rodada. Se o jogo não subir, esse artigo sai do `ARTIGOS` no `gerar.py` antes de
-publicar o blog.
+## Como foi publicado (04/10/2026)
 
-## Passos que faltam para publicar (dependem da palavra da Isis)
-
-1. ~~Subir o repositório dos jogos~~ **Feito em 04/10/2026** (`/opt/data/staging-gametools`,
-   `562e31d..ba1b930`): O Retângulo do dia está no ar em
-   `https://jogos.ibaestudio.com/jogos/retangulo-do-dia.html`, HTTP 200, e o arquivo servido tem o
-   mesmo hash do disco.
-2. **Criar o projeto do blog no Vercel.** Caminho pela tela, que não exige credencial nenhuma no
-   servidor: Vercel, Add New, Project, Import Git Repository, escolher `isisalencastro/blog-iba`.
-   Framework Preset **Other**, Build Command vazio, Output Directory vazio, Install Command vazio,
-   nenhuma variável de ambiente. Deploy. (Alternativa, se preferir pela máquina: criar o projeto
-   apontando para a pasta `/opt/data/blog-iba`, pelo PC, com os mesmos ajustes. O repositório já
-   existe, então a tela do Git é o caminho mais curto.)
-3. **Dizer ao Vercel que este projeto atende `blog.ibaestudio.com`**: Vercel, projeto do blog,
-   Settings, Domains, Add, `blog.ibaestudio.com`. O Vercel informa na tela o registro que ele espera.
-4. **Registro de DNS no Cloudflare** (só com a palavra dela):
-
-   | Campo | Valor |
-   | --- | --- |
-   | Tipo | `CNAME` |
-   | Nome | `blog` |
-   | Destino | `cname.vercel-dns.com` |
-   | Proxy | ligado (nuvem laranja), igual aos outros subdomínios da casa |
-   | TTL | automático |
-
-   O destino é o valor que o Vercel mostrar no passo 3. Hoje o Vercel recomenda
-   `cname.vercel-dns.com` para subdomínio, mas quem manda é a tela dele.
-
-   **Cuidado medido:** `ibaestudio.com` tem um registro curinga (`*`) que já responde para qualquer
-   subdomínio, inclusive para um nome inventado. Um `blog.ibaestudio.com` criado por engano só no
-   curinga responde, mas pode servir o conteúdo errado, e o erro fica escondido. Por isso o registro
-   do `blog` precisa ser explícito, e não herdar o curinga.
-
-5. **Conferir depois do DNS**: `curl -sI https://blog.ibaestudio.com/` tem de responder `200` com
-   `server: cloudflare` e o HTML do blog, e não a página de outro projeto.
-
-Não mexi no DNS do e-mail: nenhum registro de MX, SPF ou DKIM é tocado por este passo, que mexe
-apenas no nome `blog`.
+1. Projeto `blog-iba` criado na Vercel pela CLI logada no PC (`vercel link`, `vercel git connect`),
+   preset **Other**, sem build, sem variável de ambiente.
+2. `vercel domains add blog.ibaestudio.com blog-iba`. A Vercel pediu um CNAME próprio do projeto
+   (`5fe355496f8cc7a5.vercel-dns-017.com`), e não o genérico `cname.vercel-dns.com`.
+3. Registro `CNAME blog` na Cloudflare. **Cuidado medido:** `ibaestudio.com` tem um curinga (`*`);
+   o registro do `blog` precisa ser explícito para não servir conteúdo de outro projeto.
+4. Conferência: `curl -s https://blog.ibaestudio.com/` devolve o título do blog.
 
 ## O que já foi conferido
 
